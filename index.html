@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratul Halder - Web Design Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for Futuristic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-shape"></div>
+        <!-- Optional: <div class="loader-text">Loading Interface...</div> -->
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js" class="abstract-bg"></div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section">
+        <div class="hero-content">
+            <h3>Full Stack Developer & Creative Technologist</h3>
+            <h1 class="typing">Building immersive digital</h1></p><h1 class="typing">experiences with code & creativity</h1>
+            
+            <p>My mission is to design and develop a website that you and your audience love 💙.</p>
+            <a href="#" class="cta-btn pulse">Happy to chat on WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="about-content">
+            <h2 class="glow">About Me</h2>
+            <p class="tagline">transforming ideas into digital experiences</p>
+            <div class="about-details">
+                <div class="about-text">
+                    <h1 class="glow">Hello, I'm Ratul Halder</h1>
+                    <p>I am a Computer Science and Engineering student passionate about Full-stack development. I focus on creating impactful digital solutions that are innovative, user-focused and successful in every project.</p>
+                    <div class="about-buttons">
+                        <a href="CV.pdf" class="btn download-cv pulse" download="RatulHalder_CV.pdf">Download CV</a>
+                        <a href="#work" class="btn view-projects pulse">View Projects</a>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Container for circular frame -->
+                    <div class="about-image-container">
+                        <!-- Actual profile image -->
+                        <img src="bg.png" alt="Eve Kayser Profile" class="profile-photo" id="profilePhoto">
+                        <!-- Fallback Avatar (Hidden by default) -->
+                        <div class="fallback-avatar" id="fallbackAvatar" style="display: none;">
+                            <i class="fas fa-user-astronaut"></i> <!-- Futuristic icon -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <h2 class="glow">Skills & Interests</h2>
+        <div class="skills-layout"> <!-- New layout container -->
+
+            <!-- Left Column: Skills -->
+            <div class="skills-column">
+                <h3 class="column-title glow">Technical Skills</h3>
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Programming Languages</h4>
+                    <ul>
+                        <li>
+                            <i class="fab fa-python skill-list-icon"></i>
+                            <div class="skill-item-content">
+                                <span>Python</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-html5 skill-list-icon"></i>
+                            <div class="skill-item-content">
+                                <span>HTML</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-css3-alt skill-list-icon"></i>
+                            <div class="skill-item-content">
+                                <span>CSS</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt skill-list-icon"></i>
+                            <div class="skill-item-content">
+                                <span>Flutter</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-layer-group"></i> Libraries & Frameworks</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-server skill-list-icon"></i> 
+                            <div class="skill-item-content">
+                                <span>Django</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-wind skill-list-icon"></i>
+                             <div class="skill-item-content">
+                                <span>Tailwind CSS</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-bootstrap skill-list-icon"></i>
+                             <div class="skill-item-content">
+                                <span>Bootstrap</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-box skill-list-icon"></i>
+                             <div class="skill-item-content">
+                                <span>Material UI</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-database"></i> Databases</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-table skill-list-icon"></i>
+                             <div class="skill-item-content">
+                                <span>PostgreSQL</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-database skill-list-icon"></i>
+                             <div class="skill-item-content">
+                                <span>SQLite</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Soft Skills & Interests -->
+            <div class="interests-column">
+                 <h3 class="column-title glow">Soft Skills & Interests</h3>
+                 <div class="skill-category">
+                    <h4><i class="fas fa-users"></i> Soft Skills</h4>
+                    <ul>
+                        <li><i class="fas fa-users-cog skill-list-icon"></i> <span>Teamwork</span></li>
+                        <li><i class="fas fa-comments skill-list-icon"></i> <span>Communication</span></li>
+                        <li><i class="fas fa-sync-alt skill-list-icon"></i> <span>Adaptability</span></li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-lightbulb"></i> Interests</h4>
+                    <ul>
+                        <li><i class="fas fa-code-branch skill-list-icon"></i> <span>Software Development</span></li>
+                        <li><i class="fas fa-globe skill-list-icon"></i> <span>Web Development</span></li>
+                        <li><i class="fas fa-server skill-list-icon"></i> <span>Database Management</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- End of skills-layout -->
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="work section">
+        <h2 class="section-title glow">Recent Work</h2>
+        <div class="work-container">
+            <div class="work-gallery">
+                <!-- Project 1 - UPDATED -->
+                <div class="work-item" 
+                     data-project="project1"
+                     data-title="Task Tracking System"
+                     data-location=""
+                     data-credits=""
+                     data-description="Secured user authentication & authorization. Comprehensive system simplifying task assignment, updating, and management for team efficiency. Role-based management (Admin/Team). Real-time email notifications for assignments/status changes. Task progress tracking (Pending, In Progress, Done)."
+                     data-technologies="Django, Python, PostgreSQL, HTML, CSS (Tailwind, Bootstrap), Django ORM, Email Integration"
+                     data-images="img/log.png,img/sign.png,img/dash.png,img/task.png,img/set.png,img/update.png,img/list.png,img/aa.png,img/set.png"> <!-- Placeholder images -->
+                    <div class="project-info">
+                        <h3 class="project-title">Task Tracking System</h3>
+                        <p class="project-location">Team Productivity Tool</p> <!-- Updated subtitle -->
+                        <span class="view-details-prompt">View Details <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <!-- Project 2 - UPDATED -->
+                <div class="work-item" 
+                     data-project="project2"
+                     data-title="University Bus Tracking System"
+                     data-location="" 
+                     data-credits=""
+                     data-description="Real-time bus tracking for university students with ETA. Dynamic route visualization using Leaflet.js. Search functionality by route/bus number. Real-time location & travel time calculations. User-friendly responsive interface."
+                     data-technologies="Django, Python, SQLite, JavaScript (Leaflet.js), HTML, CSS Tailwind, Bootstrap"
+                     data-images="img/land.png,img/map.png,img/sche.png"> <!-- Placeholder images -->
+                    <div class="project-info">
+                        <h3 class="project-title">University Bus Tracking</h3>
+                        <p class="project-location">Real-time Tracking System</p> <!-- Updated subtitle -->
+                        <span class="view-details-prompt">View Details <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <!-- Project 3 - UPDATED -->
+                <div class="work-item" 
+                     data-project="project3"
+                     data-title="E-Commerce Website"
+                     data-location="" 
+                     data-credits="" 
+                     data-description="Secure user authentication (login, validation, password toggle). Full e-commerce system: product browsing, detail view, shopping cart. Role-based interaction (customer/admin). Real-time notifications (add/remove cart, login). Dynamic cart updates (quantity, totals, recommendations)."
+                     data-technologies="Django, Python, PostgreSQL, JavaScript, HTML, CSS" 
+                     data-images="img/login.png,img/signup.png,img/home.png,img/pro.png,img/prof.png,img/cart.png,img/ceta.png,img/info.png"> <!-- Placeholder images -->
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce Website</h3>
+                        <p class="project-location">Full Shopping Platform</p> <!-- Updated subtitle -->
+                        <span class="view-details-prompt">View Details <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+                <!-- Add more projects as needed -->
+            </div>
+            <div class="orbit-container">
+                <div class="orbit-center"></div> <!-- Center element -->
+
+                <!-- Orbit for Project 1 -->
+                <div class="orbit-path orbit-path-1">
+                    <div class="orbital-ball" data-project="project1">
+                        <span>Task</span> <!-- Updated ball text -->
+                    </div>
+                </div>
+
+                <!-- Orbit for Project 2 -->
+                <div class="orbit-path orbit-path-2">
+                    <div class="orbital-ball" data-project="project2">
+                        <span>Bus</span> <!-- Updated ball text -->
+                    </div>
+                </div>
+
+                <!-- Orbit for Project 3 -->
+                <div class="orbit-path orbit-path-3">
+                    <div class="orbital-ball" data-project="project3">
+                        <span>Shop</span> <!-- Updated ball text -->
+                    </div>
+                </div>
+
+                <!-- Add more orbit paths and balls corresponding to projects -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education section">
+        <h2 class="glow">Education</h2>
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <h3>Bachelor of Science in Computer Science and Engineering</h3>
+                    <p>Gopalgonj Science and Technology University, 2020-Present</p>
+                    <p>Specializing in front-end and Back-end development and digital solutions.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <h2 class="glow">Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn pulse">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3 class="glow">Get in Touch</h3>
+                <p>Email: ratulroyjsr@gmail.com</p>
+                <p>Phone: +8801818047060</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
+                    <a href="#" class="social-icon">Twitter</a>
+                    <a href="https://github.com/r258369?tab=repositories" class="social-icon">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Eve Kayser. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <!-- ScrollReveal CDN -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- SplitType CDN -->
+    <script src="https://unpkg.com/split-type"></script>
+    <!-- Vanilla-Tilt.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <!-- Project Modal (Updated Structure) -->
+    <div id="project-modal-overlay">
+        <div id="project-modal-panel">
+            <button id="modal-close-btn"><i class="fas fa-times"></i></button>
+            
+            <div class="modal-gallery">
+                <img src="" alt="Project Image" id="modal-image">
+                <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+                <div class="gallery-dots"></div> <!-- Optional dots for navigation -->
+            </div>
+
+            <div class="modal-details">
+                <h3 id="modal-title"></h3>
+                <p id="modal-location"></p>
+                <p id="modal-description"></p>
+                <div class="modal-technologies">
+                     <h4>Technologies Used:</h4>
+                     <ul id="modal-tech-list"></ul>
+                 </div>
+                <p id="modal-credits"></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
