@@ -188,10 +188,15 @@ function initProjectModal() {
 
     if (!modalOverlay || !modalPanel || !closeBtn || !galleryPrevBtn || !galleryNextBtn || !galleryDotsContainer || !modalTechList) return;
 
-    const tl = gsap.timeline({ paused: true, defaults: { duration: 0.4, ease: "power3.inOut" } });
+    // GSAP timeline primarily for overlay fade (can remove panel animation)
+    const tl = gsap.timeline({ 
+        paused: true, 
+        defaults: { duration: 0.4, ease: "power2.inOut" } // Adjusted ease 
+    });
 
-    tl.to(modalOverlay, { opacity: 1, visibility: 'visible' })
-      .to(modalPanel, { opacity: 1, scale: 1, visibility: 'visible' }, "<0.1");
+    // Animate overlay visibility
+    tl.to(modalOverlay, { opacity: 1, visibility: 'visible' });
+      // Removed direct panel animation from timeline
 
     function updateGallery() {
         if (projectImages.length === 0) return;
@@ -268,15 +273,21 @@ function initProjectModal() {
         }
         
         setupDots();
-        updateGallery();
+        updateGallery(); 
 
         document.body.style.overflow = 'hidden';
-        tl.play();
+        // Play overlay fade-in
+        tl.play(); 
+        // Add class to trigger CSS clip-path animation
+        modalOverlay.classList.add('visible'); 
     }
 
     function closeModal() {
         document.body.style.overflow = '';
+        // Reverse overlay fade-out
         tl.reverse();
+        // Remove class to trigger CSS clip-path reverse animation
+        modalOverlay.classList.remove('visible');
         if(currentItem) currentItem.classList.remove('pulsing');
         currentItem = null;
     }
@@ -300,6 +311,56 @@ function initProjectModal() {
         updateGallery();
     });
 }
+
+/* --- Education Timeline Animation --- */
+function initTimelineAnimation() {
+    const timeline = document.querySelector('.education-timeline');
+    if (!timeline) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3 // Trigger when 30% of the timeline container is visible
+    };
+
+    const timelineObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                timeline.classList.add('is-animating');
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, observerOptions);
+
+    timelineObserver.observe(timeline);
+}
+
+/* --- Custom Cursor Logic --- */
+/*
+function initCustomCursor() {
+    const cursorDot = document.querySelector(".cursor-dot");
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    if (!cursorDot || !cursorOutline) return;
+
+    window.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        if (typeof gsap !== 'undefined') {
+            gsap.to(cursorDot, { duration: 0.1, x: posX, y: posY });
+            gsap.to(cursorOutline, { duration: 0.2, x: posX, y: posY });
+        } else {
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+        }
+    });
+    
+    document.body.classList.add('cursor-ready');
+}
+*/
 
 // Add the orbital system initialization to your existing script
 document.addEventListener('DOMContentLoaded', function() {
@@ -357,6 +418,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initOrbitalSystem();
     initMagneticNav();
     initProjectModal(); // Initialize Project Modal
+    initTimelineAnimation(); // Call the function
+    // initCustomCursor(); // Removed call
     
     // Initialize Particles.js (if needed here)
     if (typeof particlesJS !== 'undefined') {
@@ -596,4 +659,117 @@ window.addEventListener('load', () => {
         //     preloader.remove();
         // });
     }
+});
+
+// 3D Grid Animation
+document.addEventListener('DOMContentLoaded', () => {
+    // ... canvas, ctx, animationFrameId setup ...
+    // ... resizeCanvas function ...
+    // ... mouse tracking object & listeners ...
+
+    // Grid settings & pulse variables
+    const gridSize = 50;
+    let gridWidth = Math.ceil(canvas.width / gridSize) + 2;
+    let gridHeight = Math.ceil(canvas.height / gridSize) + 2;
+    let gridRotation = 0;
+    let scrollOffset = 0;
+    let pulses = []; // Array to store active pulses
+    const maxPulses = 3;
+    const pulseChance = 0.005; // Chance per frame to create a pulse
+
+    // Update grid size on resize
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        gridWidth = Math.ceil(canvas.width / gridSize) + 2;
+        gridHeight = Math.ceil(canvas.height / gridSize) + 2;
+    }
+    resizeCanvas();
+
+    // ... Particle class ...
+
+    function drawGrid() {
+        // ... time, waveHeight, waveSpeed, baseAlpha, highlightAlpha ...
+
+        // --- Draw Pulses --- 
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2); // Center origin for rotation
+        ctx.rotate(gridRotation);
+        ctx.translate(-canvas.width / 2, -canvas.height / 2);
+
+        pulses.forEach((pulse, index) => {
+            const pulseProgress = (Date.now() - pulse.startTime) / pulse.duration;
+            if (pulseProgress > 1) {
+                pulses.splice(index, 1); // Remove finished pulse
+                return;
+            }
+            const currentRadius = pulse.maxRadius * pulseProgress;
+            const currentAlpha = pulse.startAlpha * (1 - pulseProgress);
+            
+            const gradient = ctx.createRadialGradient(
+                pulse.x, pulse.y, 0,
+                pulse.x, pulse.y, currentRadius
+            );
+            gradient.addColorStop(0, `rgba(0, 255, 255, ${currentAlpha * 0.5})`); 
+            gradient.addColorStop(0.5, `rgba(0, 255, 255, ${currentAlpha})`);
+            gradient.addColorStop(1, `rgba(0, 255, 255, 0)`);
+
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(pulse.x, pulse.y, currentRadius, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        ctx.restore(); // Restore context state after drawing pulses
+        // --- End Draw Pulses ---
+
+        // --- Draw Grid Lines (apply rotation within calculations) ---
+        ctx.lineWidth = 1;
+        // ... existing vertical line loop ...
+            // ... calculate rotatedX, rotatedY ...
+            // ... mouse distance check ...
+            // ... set strokeStyle based on distance ...
+            // ... moveTo/lineTo ...
+        // ... stroke vertical line ...
+        // ... existing horizontal line loop ...
+             // ... calculate rotatedX, rotatedY ...
+            // ... mouse distance check ...
+            // ... set strokeStyle based on distance ...
+            // ... moveTo/lineTo ...
+        // ... stroke horizontal line ...
+        // --- End Draw Grid Lines ---
+    }
+
+    // ... particles array ...
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        gridRotation += 0.0005; // Slowed down rotation slightly
+
+        // --- Create New Pulses ---
+        if (pulses.length < maxPulses && Math.random() < pulseChance) {
+            // Pick a random grid intersection point (can be off-screen)
+            const gridX = Math.floor(Math.random() * gridWidth) * gridSize;
+            const gridY = Math.floor(Math.random() * gridHeight) * gridSize + scrollOffset; 
+            // Note: Pulse origin doesn't rotate with grid for simplicity, 
+            // but pulses are drawn within the rotated context.
+            
+            pulses.push({
+                x: gridX,
+                y: gridY,
+                startTime: Date.now(),
+                duration: 1500 + Math.random() * 1000, // 1.5 - 2.5 seconds
+                maxRadius: 100 + Math.random() * 100,
+                startAlpha: 0.2 + Math.random() * 0.2
+            });
+        }
+        // --- End Create New Pulses ---
+        
+        drawGrid(); // Draw grid and pulses
+        
+        // ... particle update & draw loop ...
+        
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // ... animate() call, scroll handler, resize handler, cleanup ...
 });
