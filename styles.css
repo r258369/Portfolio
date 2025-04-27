@@ -6,10 +6,11 @@
 }
 
 body {
-    background: #0a0a0a;
-    color: #fff;
+    background: var(--bg-color, #0a0a0a);
+    color: var(--text-color, #fff);
     position: relative;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Transition for body */
 }
 
 /* Futuristic Font for Headings */
@@ -29,7 +30,8 @@ h1, h2, h3 {
 
 /* Glowing Effect for Text */
 .glow {
-    text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 30px #00d4c7;
+    text-shadow: 0 0 10px var(--glow-color-1, #00f7ff), 0 0 20px var(--glow-color-2, #00f7ff), 0 0 30px var(--glow-color-3, #00d4c7);
+    transition: text-shadow 0.4s ease; /* Transition shadow */
 }
 
 /* Pulse Animation for Buttons */
@@ -69,7 +71,7 @@ h1, h2, h3 {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(10, 25, 47, 0.8);
+    background: var(--nav-bg, rgba(10, 25, 47, 0.8));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 1.2rem 2rem; /* Increased vertical padding, slightly increased horizontal */
@@ -80,7 +82,7 @@ h1, h2, h3 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     width: auto;
     max-width: 90%;
-    transition: padding 0.3s ease;
+    transition: background-color 0.4s ease, padding 0.3s ease;
 }
 
 /* Logo might be separate or integrated, style if needed */
@@ -107,12 +109,12 @@ h1, h2, h3 {
 }
 
 .floating-nav .nav-links li a {
-    color: #eef5ff;
+    color: var(--nav-link-color, #eef5ff);
     text-decoration: none;
     font-size: 0.9rem;
     text-transform: uppercase;
     font-weight: bold;
-    transition: color 0.3s ease, transform 0.1s linear;
+    transition: color 0.4s ease, transform 0.1s linear;
     position: relative;
     padding: 0.5rem 0;
 }
@@ -268,18 +270,21 @@ h1, h2, h3 {
 .cta-btn {
     display: inline-block;
     padding: 15px 30px;
-    background: #00d4c7;
-    color: #fff;
+    background: transparent;
+    border: 2px solid #00d4c7;
+    color: #00d4c7;
     text-decoration: none;
     border-radius: 30px;
     font-size: clamp(14px, 2vw, 18px);
-    box-shadow: 0 0 15px rgba(0, 212, 199, 0.5);
-    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 199, 0.4);
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta-btn:hover {
-    background: #00f7ff;
-    transform: scale(1.05);
+    background: #00d4c7;
+    color: #0a0a0a;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 212, 199, 0.7);
 }
 
 /* About Section */
@@ -473,11 +478,12 @@ h1, h2, h3 {
 
 .column-title {
     font-size: clamp(20px, 3vw, 28px);
-    color: #eef5ff;
+    color: var(--text-color, #eef5ff);
     margin-bottom: 10px; /* Space below column title */
     text-align: center;
     border-bottom: 2px solid rgba(0, 247, 255, 0.3);
     padding-bottom: 10px;
+    transition: color 0.4s ease;
 }
 
 /* Use h4 for category titles within columns */
@@ -498,15 +504,15 @@ h1, h2, h3 {
 
 /* Keep existing .skill-category styles for background, border, hover etc. */
 .skill-category {
-    background: rgba(26, 60, 52, 0.2);
+    background: var(--card-bg, rgba(26, 60, 52, 0.2));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(0, 247, 255, 0.3);
+    border: 1px solid var(--border-color, rgba(0, 247, 255, 0.3));
     box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-category:hover {
@@ -627,7 +633,8 @@ h1, h2, h3 {
     font-size: clamp(24px, 4vw, 36px); /* Match other section title sizes */
     text-align: center;
     margin-bottom: 50px; /* Consistent margin */
-    color: #fff; /* Ensure base color is white, hover effect handles cyan */
+    color: var(--text-color, #eef5ff); /* Ensure base color is white, hover effect handles cyan */
+    transition: color 0.4s ease;
 }
 
 .work-container {
@@ -648,12 +655,12 @@ h1, h2, h3 {
 }
 
 .work-item {
-    background: rgba(26, 60, 52, 0.2);
+    background: var(--card-bg, rgba(26, 60, 52, 0.2));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid rgba(0, 247, 255, 0.3);
+    border: 1px solid var(--border-color, rgba(0, 247, 255, 0.3));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 2rem;
     box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
@@ -849,80 +856,96 @@ h1, h2, h3 {
 }
 
 .education-timeline {
+    position: relative;
     max-width: 800px;
     margin: 0 auto;
-    position: relative;
+    padding: 20px 0;
 }
 
+/* Timeline Line */
 .education-timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
     top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #00f7ff;
-    transform: translateX(-50%);
-    opacity: 0.3;
+    left: 20px; /* Position relative to dots */
+    width: 4px;
+    height: 100%; /* Full height initially */
+    background-color: rgba(0, 247, 255, 0.2); /* Faint line color */
+    border-radius: 2px;
+}
+
+/* Animated Line Segment */
+.education-timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 4px;
+    height: 0; /* Start with 0 height */
+    background: linear-gradient(to bottom, #00d4c7, #00f7ff); /* Gradient for active line */
+    border-radius: 2px;
+    transition: height 0.8s ease-out; /* Smooth height animation */
+    box-shadow: 0 0 8px rgba(0, 247, 255, 0.5);
+}
+
+/* State for when timeline is animating */
+.education-timeline.is-animating::after {
+    height: 100%; /* Animate to full height */
 }
 
 .education-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
     position: relative;
+    padding-left: 60px; /* Space for dot and line */
+    margin-bottom: 40px;
 }
 
 .education-dot {
-    width: 16px;
-    height: 16px;
-    background: #00f7ff;
-    border-radius: 50%;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
-    animation: pulse 2s infinite ease-in-out;
+    left: 0;
+    top: 5px; /* Align with text better */
+    width: 44px; /* Increased size */
+    height: 44px;
+    background: rgba(10, 25, 47, 0.8);
+    border: 3px solid #00f7ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.4);
+    z-index: 1; /* Above line */
+    transform: translateX(-50%); /* Center on the line */
+    left: 22px; /* (Width/2) + (Line Width/2) */
+}
+
+/* Optional: Add icon inside dot */
+.education-dot::before {
+    content: '\f19d'; /* Font Awesome graduation cap */
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    font-size: 18px;
+    color: #00f7ff;
 }
 
 .education-content {
-    background: rgba(26, 60, 52, 0.2);
+    background: var(--card-bg, rgba(26, 60, 52, 0.2));
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     padding: 20px;
-    border-radius: 10px;
-    width: 45%;
-    position: relative;
-    border: 1px solid rgba(0, 247, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.education-content:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
-}
-
-.education-item:nth-child(odd) .education-content {
-    margin-left: 0;
-    margin-right: auto;
-    text-align: right;
-}
-
-.education-item:nth-child(even) .education-content {
-    margin-left: auto;
-    margin-right: 0;
-    text-align: left;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, rgba(0, 247, 255, 0.3));
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .education-content h3 {
-    font-size: clamp(16px, 2.5vw, 24px);
+    font-size: clamp(16px, 2.5vw, 20px);
     color: #00f7ff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .education-content p {
     font-size: clamp(12px, 2vw, 16px);
     color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 5px;
 }
 
 /* Contact Section */
@@ -948,14 +971,15 @@ h1, h2, h3 {
 
 .contact-form {
     flex: 1;
-    background: rgba(26, 60, 52, 0.2);
+    background: var(--card-bg, rgba(26, 60, 52, 0.2));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 10px;
-    border: 1px solid rgba(0, 247, 255, 0.3);
+    border: 1px solid var(--border-color, rgba(0, 247, 255, 0.3));
     box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
     min-width: 300px;
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form form {
@@ -1332,6 +1356,7 @@ nav .nav-links a:hover::after {
     background: none;
     border: none;
     color: var(--text-color, #eef5ff); /* Use text color variable */
+    transition: color 0.4s ease;
 }
 
 /* Mobile Menu Styles */
@@ -1503,9 +1528,21 @@ nav .nav-links a:hover::after {
     max-width: 800px;
     max-height: 90vh;
     overflow-y: auto;
-    opacity: 0;
-    transform: scale(0.8);
-    visibility: hidden;
+    position: relative;
+    color: #eef5ff;
+    text-align: center;
+    /* Initial state for GSAP animation - UPDATED */
+    opacity: 1; /* Keep opacity 1 */
+    visibility: hidden; /* Use visibility to hide */
+    transform: none; /* Remove scale transform */
+    clip-path: circle(0% at 50% 50%); /* Start as a collapsed circle */
+    transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.3, 1); /* Add transition for reverse */
+}
+
+/* State when modal overlay is visible (JS will add this class) */
+#project-modal-overlay.visible #project-modal-panel {
+     visibility: visible;
+     clip-path: circle(150% at 50% 50%); /* Expand circle */
 }
 
 #modal-close-btn {
@@ -1667,4 +1704,74 @@ nav .nav-links a:hover::after {
     color: #999;
     font-style: italic;
     margin-top: 1.5rem; /* Add margin above credits */
+}
+
+/* Subtle Animated Background Layer */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, rgba(0, 247, 255, 0.02) 0%, rgba(10, 25, 47, 0.05) 50%, rgba(107, 33, 168, 0.02) 100%);
+    background-size: 400% 400%;
+    animation: subtleGradientShift 30s ease infinite;
+    z-index: -2; /* Place behind everything, including other backgrounds */
+    opacity: 0.5;
+}
+
+@keyframes subtleGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Input Field Focus Glow */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    /* Ensure existing styles are present */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transitions */
+    border: 1px solid var(--border-color, rgba(0, 247, 255, 0.3)); /* Base border */
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #00f7ff; /* Highlight border color */
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.4); /* Add glow */
+    outline: none; /* Remove default browser outline */
+}
+
+/* Ensure CSS Variables are defined */
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #eef5ff;
+    --nav-bg: rgba(10, 25, 47, 0.8);
+    --nav-link-color: #eef5ff;
+    --card-bg: rgba(26, 60, 52, 0.2);
+    --border-color: rgba(0, 247, 255, 0.3);
+    --icon-color: #00f7ff;
+    --accent-color: #00f7ff;
+    --secondary-color: #00d4c7;
+    --glow-color-1: #00f7ff;
+    --glow-color-2: #00f7ff;
+    --glow-color-3: #00d4c7;
+}
+
+.light-theme {
+    --bg-color: #f0f4f8;
+    --text-color: #1a202c;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-link-color: #2d3748;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(0, 123, 255, 0.4);
+    --icon-color: #007bff;
+    --accent-color: #007bff;
+    --secondary-color: #0056b3;
+    --glow-color-1: #007bff;
+    --glow-color-2: #007bff;
+    --glow-color-3: #0056b3;
+    .glow {
+        text-shadow: none;
+    }
 }
