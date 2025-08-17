@@ -155,6 +155,12 @@
                         <li>
                             <i class="fas fa-database skill-list-icon"></i>
                              <div class="skill-item-content">
+                                <span>Firebase</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-database skill-list-icon"></i>
+                             <div class="skill-item-content">
                                 <span>MySQL</span>
                             </div>
                         </li>
@@ -197,6 +203,7 @@
                      data-title="Task Tracking System"
                      data-location=""
                      data-credits=""
+                     data-link="https://ray008ratul.pythonanywhere.com/"
                      data-description="Secured user authentication & authorization. Comprehensive system simplifying task assignment, updating, and management for team efficiency. Role-based management (Admin/Team). Real-time email notifications for assignments/status changes. Task progress tracking (Pending, In Progress, Done)."
                      data-technologies="Django, Python, PostgreSQL, HTML, CSS (Tailwind, Bootstrap), Django ORM, Email Integration"
                      data-images="img/log.png,img/sign.png,img/dash.png,img/task.png,img/set.png,img/update.png,img/list.png,img/aa.png,img/set.png"> <!-- Placeholder images -->
@@ -209,15 +216,16 @@
                 <!-- Project 2 - UPDATED -->
                 <div class="work-item" 
                      data-project="project2"
-                     data-title="University Bus Tracking System"
+                     data-title="AI Learning Platform"
                      data-location="" 
                      data-credits=""
-                     data-description="Real-time bus tracking for university students with ETA. Dynamic route visualization using Leaflet.js. Search functionality by route/bus number. Real-time location & travel time calculations. User-friendly responsive interface."
-                     data-technologies="Django, Python, SQLite, JavaScript (Leaflet.js), HTML, CSS Tailwind, Bootstrap"
-                     data-images="img/land.png,img/map.png,img/sche.png"> <!-- Placeholder images -->
+                     data-link="https://ailearning-5n60.onrender.com/"
+                     data-description="An AI-powered personalized learning platform that uses quizzes and Gemini AI to create custom syllabuses, generate study materials, recommend YouTube videos, and provide dynamic quizzes with progress tracking, secured by Firebase authentication and scalable with Firestore."
+                     data-technologies="Django, Python, Firebase, JavaScript, HTML, CSS Tailwind, Bootstrap"
+                     data-images="img/ai1.png,img/ai2.png,img/ai3.png,img/ai4.png,img/ai5.png,img/ai6.png,img/ai7.png,img/ai8.png"> <!-- Placeholder images -->
                     <div class="project-info">
-                        <h3 class="project-title">University Bus Tracking</h3>
-                        <p class="project-location">Real-time Tracking System</p> <!-- Updated subtitle -->
+                        <h3 class="project-title">AI Learning Platform</h3>
+                        <p class="project-location">Educational Tool</p> <!-- Updated subtitle -->
                         <span class="view-details-prompt">View Details <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
@@ -226,7 +234,8 @@
                      data-project="project3"
                      data-title="E-Commerce Website"
                      data-location="" 
-                     data-credits="" 
+                     data-credits=""
+                     data-link="https://ecommarce.pythonanywhere.com/" 
                      data-description="Secure user authentication (login, validation, password toggle). Full e-commerce system: product browsing, detail view, shopping cart. Role-based interaction (customer/admin). Real-time notifications (add/remove cart, login). Dynamic cart updates (quantity, totals, recommendations)."
                      data-technologies="Django, Python, PostgreSQL, JavaScript, HTML, CSS" 
                      data-images="img/login.png,img/signup.png,img/home.png,img/pro.png,img/prof.png,img/cart.png,img/ceta.png,img/info.png"> <!-- Placeholder images -->
@@ -311,7 +320,7 @@
                 <div class="social-links">
                     <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
                     <a href="#" class="social-icon">Twitter</a>
-                    <a href="https://github.com/r258369" class="social-icon">GitHub</a>
+                    <a href="https://github.com/r258369?tab=repositories" class="social-icon">GitHub</a>
                 </div>
             </div>
         </div>
@@ -336,29 +345,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <!-- Project Modal (Updated Structure) -->
-    <div id="project-modal-overlay">
-        <div id="project-modal-panel">
-            <button id="modal-close-btn"><i class="fas fa-times"></i></button>
-            
-            <div class="modal-gallery">
-                <img src="" alt="Project Image" id="modal-image">
-                <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
-                <div class="gallery-dots"></div> <!-- Optional dots for navigation -->
-            </div>
+<div id="project-modal-overlay">
+    <div id="project-modal-panel">
+        <button id="modal-close-btn"><i class="fas fa-times"></i></button>
+        
+        <div class="modal-gallery">
+            <img src="" alt="Project Image" id="modal-image">
+            <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+            <div class="gallery-dots"></div> <!-- Optional dots for navigation -->
+        </div>
 
-            <div class="modal-details">
-                <h3 id="modal-title"></h3>
-                <p id="modal-location"></p>
-                <p id="modal-description"></p>
-                <div class="modal-technologies">
-                     <h4>Technologies Used:</h4>
-                     <ul id="modal-tech-list"></ul>
-                 </div>
-                <p id="modal-credits"></p>
+        <div class="modal-details">
+            <h3 id="modal-title"></h3>
+            <p id="modal-location"></p>
+            <p id="modal-description"></p>
+            <div class="modal-technologies">
+                <h4>Technologies Used:</h4>
+                <ul id="modal-tech-list"></ul>
             </div>
+            <p id="modal-credits"></p>
 
+            <!-- Live Button (will be set dynamically) -->
+            <a id="modal-live-btn" 
+               href="#" 
+               class="btn live-btn pulse" 
+               target="_blank" 
+               style="margin-top:16px; display:none;">Live</a>
         </div>
     </div>
+</div>
+
 </body>
 </html>
