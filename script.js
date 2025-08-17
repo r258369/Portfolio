@@ -181,22 +181,20 @@ function initProjectModal() {
     const galleryPrevBtn = document.querySelector('.modal-gallery .prev');
     const galleryNextBtn = document.querySelector('.modal-gallery .next');
     const galleryDotsContainer = document.querySelector('.modal-gallery .gallery-dots');
-
+    const modalButton = document.getElementById('modal-live-btn');
     let currentItem = null;
     let projectImages = [];
     let currentImageIndex = 0;
 
     if (!modalOverlay || !modalPanel || !closeBtn || !galleryPrevBtn || !galleryNextBtn || !galleryDotsContainer || !modalTechList) return;
 
-    // GSAP timeline primarily for overlay fade (can remove panel animation)
+    // GSAP timeline for overlay fade
     const tl = gsap.timeline({ 
         paused: true, 
-        defaults: { duration: 0.4, ease: "power2.inOut" } // Adjusted ease 
+        defaults: { duration: 0.4, ease: "power2.inOut" }
     });
 
-    // Animate overlay visibility
     tl.to(modalOverlay, { opacity: 1, visibility: 'visible' });
-      // Removed direct panel animation from timeline
 
     function updateGallery() {
         if (projectImages.length === 0) return;
@@ -236,7 +234,7 @@ function initProjectModal() {
     }
 
     function openModal(item) {
-        if(currentItem) currentItem.classList.remove('pulsing');
+        if (currentItem) currentItem.classList.remove('pulsing');
         currentItem = item;
         item.classList.add('pulsing');
         setTimeout(() => item.classList.remove('pulsing'), 800);
@@ -247,6 +245,7 @@ function initProjectModal() {
         const description = item.dataset.description || 'No description available.';
         const technologiesAttr = item.dataset.technologies || '';
         const imagesAttr = item.dataset.images || '';
+        const liveLink = item.dataset.link || '#';
         
         projectImages = imagesAttr ? imagesAttr.split(',').map(s => s.trim()).filter(s => s) : [];
         currentImageIndex = 0;
@@ -255,9 +254,20 @@ function initProjectModal() {
         modalLocation.textContent = location;
         modalCredits.textContent = credits;
         modalDescription.textContent = description;
+
+        // 🔥 Set Live Button dynamically
+        if (modalButton) {
+            if (liveLink && liveLink !== '#') {
+                modalButton.style.display = 'inline-block';
+                modalButton.setAttribute('href', liveLink);
+                modalButton.setAttribute('target', '_blank');
+            } else {
+                modalButton.style.display = 'none';
+            }
+        }
         
-        // Populate Technologies List
-        modalTechList.innerHTML = ''; // Clear previous techs
+        // Populate Technologies
+        modalTechList.innerHTML = '';
         if (technologiesAttr) {
             const techs = technologiesAttr.split(',').map(s => s.trim()).filter(s => s);
             techs.forEach(tech => {
@@ -265,10 +275,8 @@ function initProjectModal() {
                 li.textContent = tech;
                 modalTechList.appendChild(li);
             });
-            // Show the parent container if techs exist
             modalTechList.closest('.modal-technologies').style.display = 'block';
         } else {
-             // Hide the parent container if no techs
             modalTechList.closest('.modal-technologies').style.display = 'none';
         }
         
@@ -276,19 +284,15 @@ function initProjectModal() {
         updateGallery(); 
 
         document.body.style.overflow = 'hidden';
-        // Play overlay fade-in
         tl.play(); 
-        // Add class to trigger CSS clip-path animation
         modalOverlay.classList.add('visible'); 
     }
 
     function closeModal() {
         document.body.style.overflow = '';
-        // Reverse overlay fade-out
         tl.reverse();
-        // Remove class to trigger CSS clip-path reverse animation
         modalOverlay.classList.remove('visible');
-        if(currentItem) currentItem.classList.remove('pulsing');
+        if (currentItem) currentItem.classList.remove('pulsing');
         currentItem = null;
     }
 
