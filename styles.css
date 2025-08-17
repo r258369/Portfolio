@@ -1500,6 +1500,7 @@ nav .nav-links a:hover::after {
 /* Project Modal Styles */
 #project-modal-overlay {
     position: fixed;
+    margin-top: 80px;
     top: 0;
     left: 0;
     width: 100%;
@@ -1514,10 +1515,10 @@ nav .nav-links a:hover::after {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease; /* For fade in/out */
+    overflow: auto;
 }
 
 #project-modal-panel {
-    display: flex;
     flex-direction: column;
     gap: 1.5rem;
     background: rgba(15, 35, 50, 0.6);
@@ -1525,18 +1526,22 @@ nav .nav-links a:hover::after {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 247, 255, 0.4);
     padding: 2rem;
-    max-width: 800px;
-    max-height: 90vh;
+    max-width: 900px;
+    max-height: 120vh;
     overflow-y: auto;
     position: relative;
     color: #eef5ff;
     text-align: center;
+    overflow-y: auto;
+    scroll-behavior: smooth;
     /* Initial state for GSAP animation - UPDATED */
     opacity: 1; /* Keep opacity 1 */
     visibility: hidden; /* Use visibility to hide */
     transform: none; /* Remove scale transform */
     clip-path: circle(0% at 50% 50%); /* Start as a collapsed circle */
     transition: clip-path 0.5s cubic-bezier(0.7, 0, 0.3, 1); /* Add transition for reverse */
+    margin-top: 180px;
+    margin-bottom: 100px;;
 }
 
 /* State when modal overlay is visible (JS will add this class) */
@@ -1600,7 +1605,7 @@ nav .nav-links a:hover::after {
 .modal-gallery {
     position: relative;
     width: 100%;
-    max-width: 700px;
+    max-width: 1500px;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 8px;
@@ -1774,4 +1779,21 @@ body::before {
     .glow {
         text-shadow: none;
     }
+}
+
+.btn.live-btn {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,114,255,0.15);
+    cursor: pointer;
+}
+.btn.live-btn:hover, .btn.live-btn:focus {
+    background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+    box-shadow: 0 4px 16px rgba(0,114,255,0.25);
 }
